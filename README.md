@@ -10,8 +10,7 @@
 - `Node-project/` — мінімальний HTTP-сервер на `http` (ESM), маршрути GET/POST/PUT/PATCH/DELETE, готові скрипти перевірки (`check.sh`, `post-check.js`) і Postman-колекція.
 - `Exspress-project/` — простий Express CRUD для задач у памʼяті; два формати видачі (`/tasks`, `/api/tasks`), базові маршрути створення/оновлення/видалення.
 - `SQLite-project/` — Express + SQLite (`tasks.db`), автоматичне створення таблиці й сидінг 5 задач; приклад SQL-схеми та cURL-запитів.
-- `Genius-Backend-Course/` — Task Manager API на Express + MongoDB (Mongoose), JWT (access+refresh), ролі `user`/`admin`, Zod-валідатори, Swagger UI, pino-логи, middleware безпеки (helmet, rate limit, cors, compression).
-- `MongoDB-project/` — аналогічний Task Manager API на Express + MongoDB (дзеркальний приклад для практики).
+- `MongoDB-project/` — Task Manager API на Express + MongoDB (Mongoose), JWT (access+refresh), ролі `user`/`admin`, Zod-валідатори, Swagger UI, pino-логи, middleware безпеки (helmet, rate limit, cors, compression).
 
 ## Як запустити швидко
 ```bash
