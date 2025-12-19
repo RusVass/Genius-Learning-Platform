@@ -1,0 +1,50 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# logs and diagnostics
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+logs
+*.pid
+*.seed
+*.pid.lock
+
+# build and coverage output
+dist
+build
+coverage
+.nyc_output
+.turbo
+.next
+.cache
+
+# temporary files
+tmp
+temp
+*.tmp
+*.swp
+*.swo
+
+# database/local data
+*.sqlite
+*.sqlite3
+*.db
+
+# editor and tooling
+.vscode
+.idea
+
+# OS generated
+.DS_Store
+Thumbs.db
+

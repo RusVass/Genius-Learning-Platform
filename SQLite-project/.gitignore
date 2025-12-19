@@ -1,0 +1,30 @@
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+.pnp.cjs
+.pnp.loader.mjs
+
+# Env & local configs
+.env
+.env.local
+.env.*.local
+
+# Logs & coverage
+logs/
+*.log
+coverage/
+.nyc_output/
+
+# Editor/OS
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+
+# SQLite artifacts
+tasks.db
+*.db-journal
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
