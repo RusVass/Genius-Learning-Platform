@@ -1,0 +1,35 @@
+import swaggerJSDoc from 'swagger-jsdoc';
+
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Task Manager API',
+            description: 'Task manager application',
+            version: '1.0.0',
+        },
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+            schemas: {
+                ErrorResponse: {
+                    type: 'object',
+                    properties: {
+                        message: { type: 'string' },
+                    },
+                },
+            },
+        },
+        security: [{ bearerAuth: [] }],
+    },
+    apis: ['./routes/*.js'],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
+export default swaggerSpec;
