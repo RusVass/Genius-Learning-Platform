@@ -3,6 +3,8 @@ node_modules/
 dist/
 build/
 coverage/
+.idea/
+.vscode/
 .env
 .env.*
 !.env.example
