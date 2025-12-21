@@ -10,6 +10,7 @@
 - `Node-project/` — мінімальний HTTP-сервер на `http` (ESM), маршрути GET/POST/PUT/PATCH/DELETE, готові скрипти перевірки (`check.sh`, `post-check.js`) і Postman-колекція.
 - `Exspress-project/` — простий Express CRUD для задач у памʼяті; два формати видачі (`/tasks`, `/api/tasks`), базові маршрути створення/оновлення/видалення.
 - `SQLite-project/` — Express + SQLite (`tasks.db`), автоматичне створення таблиці й сидінг 5 задач; приклад SQL-схеми та cURL-запитів.
+- `Auth-Project/` — Express + MongoDB з реєстрацією/логіном, JWT (Bearer), Basic Auth, guard-и `checkAuth`, `checkAdmin`, `requireRole`, маршрути `/profile`, `/admin`, `/admin/users`.
 - `MongoDB-project/` — Task Manager API на Express + MongoDB (Mongoose), JWT (access+refresh), ролі `user`/`admin`, Zod-валідатори, Swagger UI, pino-логи, middleware безпеки (helmet, rate limit, cors, compression).
 
 ## Як запустити швидко
@@ -20,6 +21,7 @@ cd Genius-Lessons
 - Обери підпапку та виконай `npm install`.
 - Для простих демо (`Node-project`, `Exspress-project`, `SQLite-project`) достатньо `npm run start` (за потреби `PORT` або `127.0.0.1:7000` для Node-прикладу).
 - Для Mongo проєктів створіть `.env` з `MONGODB_URI`, `JWT_SECRET`, `JWT_REFRESH_SECRET`, `PORT` (див. приклади в README кожної папки), далі `npm run dev` або `npm run start`.
+- Для `Auth-Project` мінімально потрібні `MONGODB_URI`, `JWT_SECRET`, `PORT`; маршрути та формати запитів описані в його README.
 
 ## Що ви навчитесь
 - Рівень 1: розуміння HTTP-обробки без фреймворків (роутинг, статуси, методи).
