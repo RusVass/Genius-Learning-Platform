@@ -21,6 +21,12 @@ PORT=3001
 - `POST /admin/users` — створення користувача (admin/user), тільки для admin.
 - `GET /basic-profile` — Basic Auth (email + пароль), без JWT.
 
+## Middleware
+- `checkAuth` — валідує Bearer JWT, додає `req.user`.
+- `checkAdmin` — перевіряє `req.user.role === 'admin'`.
+- `requireRole(roles)` — альтернативний guard для списку ролей.
+- `checkBasicAuth` — Basic Auth, додає `req.user` і `req.userDoc`.
+
 ## Формати запитів
 ### POST /register
 Body (JSON):
