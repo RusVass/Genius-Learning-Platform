@@ -72,3 +72,25 @@ export async function checkBasicAuth(req, res, next) {
     }
 }
 
+export function ensureOwnerOrAdmin(getOwnerId) {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+
+        const isAdmin = req.user.role === 'admin';
+        if (isAdmin) return next();
+
+        const ownerId = getOwnerId(req);
+        if (!ownerId) {
+            return res.status(404).json({ message: 'Resource not found' });
+        }
+
+        if (ownerId.toString() !== req.user.id) {
+            return res.status(403).json({ message: 'Forbidden' });
+        }
+
+        return next();
+    };
+}
+

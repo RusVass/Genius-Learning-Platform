@@ -1,4 +1,4 @@
-За пошту# Auth Project
+# Auth Project
 
 ## Запуск
 ```bash
@@ -14,10 +14,11 @@ PORT=3001
 ```
 
 ## Маршрути
-- `POST /register` — створення користувача, видає JWT.
+- `POST /register` — створення користувача (роль фіксовано `user`), видає JWT.
 - `POST /login` — логін, видає JWT.
 - `GET /profile` — Bearer JWT обовʼязковий.
 - `GET /admin` — Bearer JWT + роль `admin`.
+- `POST /admin/users` — створення користувача (admin/user), тільки для admin.
 - `GET /basic-profile` — Basic Auth (email + пароль), без JWT.
 
 ## Формати запитів
@@ -28,11 +29,28 @@ Body (JSON):
   "firstName": "Test",
   "lastName": "User",
   "email": "test@example.com",
-  "password": "secret123",
-  "role": "user"
+  "password": "secret123"
 }
 ```
 Відповідь 201: дані користувача + `token`.
+
+### POST /admin/users (лише admin)
+Headers:
+```
+Authorization: Bearer <admin_token>
+Content-Type: application/json
+```
+Body (JSON):
+```json
+{
+  "firstName": "Admin2",
+  "lastName": "User",
+  "email": "admin2@example.com",
+  "password": "secret123",
+  "role": "admin"  // або "user"
+}
+```
+Відповідь 201: дані створеного користувача (без токена).
 
 ### POST /login
 Body (JSON):
@@ -68,6 +86,6 @@ Auth: Basic (username = email, password = plaintext)
 ## Безпека
 - JWT підпис HS256, експірація 1h, секрет `JWT_SECRET`.
 - Паролі зберігаються як bcrypt-хеш.
-- Role guard для `/admin`.
+- Role guard для `/admin` і `/admin/users` (потрібна роль `admin`).
 
 

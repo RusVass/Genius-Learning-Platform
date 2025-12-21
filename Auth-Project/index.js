@@ -6,6 +6,7 @@ import 'dotenv/config';
 import './config/db.js';
 import { User } from './models/userModel.js';
 import { checkAuth, requireRole, checkBasicAuth } from './middleware/checkAuth.js';
+import { checkAdmin } from './middleware/checkAdmin.js';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -22,18 +23,14 @@ function signToken(user) {
 }
 
 app.post('/register', async (req, res) => {
-    const { firstName, lastName, email, password, role = 'user' } = req.body || {};
+    const { firstName, lastName, email, password } = req.body || {};
 
     if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    if (!['user', 'admin'].includes(role)) {
-        return res.status(400).json({ message: 'Invalid role' });
-    }
-
     try {
-        const user = await User.create({ firstName, lastName, email, password, role });
+        const user = await User.create({ firstName, lastName, email, password, role: 'user' });
         const token = signToken(user);
         return res.status(201).json({
             id: user._id,
@@ -108,8 +105,38 @@ app.get('/profile', checkAuth, async (req, res) => {
     }
 });
 
-app.get('/admin', checkAuth, requireRole(['admin']), (req, res) => {
+app.get('/admin', checkAuth, checkAdmin, (req, res) => {
     return res.status(200).json({ message: 'Admin access granted' });
+});
+
+app.post('/admin/users', checkAuth, checkAdmin, async (req, res) => {
+    const { firstName, lastName, email, password, role = 'user' } = req.body || {};
+
+    if (!firstName || !lastName || !email || !password) {
+        return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    if (!['user', 'admin'].includes(role)) {
+        return res.status(400).json({ message: 'Invalid role' });
+    }
+
+    try {
+        const user = await User.create({ firstName, lastName, email, password, role });
+        return res.status(201).json({
+            id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            role: user.role,
+            createdAt: user.createdAt,
+        });
+    } catch (err) {
+        if (err.code === 11000) {
+            return res.status(409).json({ message: 'Email already exists' });
+        }
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
 });
 
 app.get('/basic-profile', checkBasicAuth, (req, res) => {
