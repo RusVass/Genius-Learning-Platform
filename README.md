@@ -11,8 +11,9 @@
 - `Exspress-project/` — простий Express CRUD для задач у памʼяті; два формати видачі (`/tasks`, `/api/tasks`), базові маршрути створення/оновлення/видалення.
 - `SQLite-project/` — Express + SQLite (`tasks.db`), автоматичне створення таблиці й сидінг 5 задач; приклад SQL-схеми та cURL-запитів.
 - `Auth-Project/` — Express + MongoDB з реєстрацією/логіном, JWT (Bearer), Basic Auth, guard-и `checkAuth`, `checkAdmin`, `requireRole`, маршрути `/profile`, `/admin`, `/admin/users`.
-- `File-uploader-db/` — приклади роботи з файловою системою Node.js (`fs`, `fs/promises`): читання/запис/append, створення/перейменування/видалення файлів, простий HTTP-сервер, що віддає вміст файлу.
+- `File-uploader-db-project/` — приклади роботи з файловою системою Node.js (`fs`, `fs/promises`): читання/запис/append, створення/перейменування/видалення файлів, простий HTTP-сервер, що віддає вміст файлу.
 - `MongoDB-project/` — Task Manager API на Express + MongoDB (Mongoose), JWT (access+refresh), ролі `user`/`admin`, Zod-валідатори, Swagger UI, pino-логи, middleware безпеки (helmet, rate limit, cors, compression).
+- `uploader-image-db/` — Express + Multer: завантаження файлів на диск і в MongoDB (Buffer), CRUD для користувачів-зображень; 5 МБ ліміти, приклади маршрутів у локальному README.
 
 ## Як запустити швидко
 ```bash
