@@ -14,6 +14,7 @@
 - `File-uploader-db-project/` — приклади роботи з файловою системою Node.js (`fs`, `fs/promises`): читання/запис/append, створення/перейменування/видалення файлів, простий HTTP-сервер, що віддає вміст файлу.
 - `MongoDB-project/` — Task Manager API на Express + MongoDB (Mongoose), JWT (access+refresh), ролі `user`/`admin`, Zod-валідатори, Swagger UI, pino-логи, middleware безпеки (helmet, rate limit, cors, compression).
 - `uploader-image-db/` — Express + Multer: завантаження файлів на диск і в MongoDB (Buffer), CRUD для користувачів-зображень; 5 МБ ліміти, приклади маршрутів у локальному README.
+- `test-mocha-chai/` — утиліти для геометрії прямокутника/квадрата (`calcArea`, `calcPerimeter`, `isSquare`) з тестами на Mocha + Chai та прикладами дебагу.
 
 ## Як запустити швидко
 ```bash
